@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Note from './Note';
+
+import Editable from './Editable';
 // import uuid from 'uuid';
 
 // const notes = [
@@ -17,15 +19,20 @@ import Note from './Note';
 // ];
 
 // export default () => (
-export default ({notes}) => (
+export default (props) => (
     <ul>
-        {notes.map(({id, task}) => 
+        {props.notes.map(({id, task}) => 
             // <li key={note.id}>{note.task}</li>)
             <li key={id}>
-                <Note 
-                    onDelete = {onDelete.bind(null, id)}
+                {/* <Note 
+                    onDelete = {props.onDelete.bind(null, id)}
                     task={task} 
-                />
+                /> */}
+            
+                <Note>
+                    <span>{task}</span>
+                    <button onClick={onDelete.bind(null, id)}>x</button>
+                </Note>
             </li>
         )}
     </ul>
